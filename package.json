@@ -1,8 +1,25 @@
 {
-  "name": "monaco-editor",
-  "private": true,
-  "version": "0.0.0",
+  "name": "wind-editor",
+  "version": "0.0.1",
+  "types": "./dist/index.d.ts",
   "type": "module",
+  "main": "./dist/wind-editor.umd.js",
+  "module": "./dist/wind-editor.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/wind-editor.es.js",
+      "require": "./dist/wind-editor.umd.js"
+    },
+    "./dist/styles.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "files": [
+    "dist/*"
+  ],
+  "keywords": ["Editor", "react", "typescript", "tailwindcss", "vite"],
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
