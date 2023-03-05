@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri + React + TS</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+      require.config({ paths: { vs: "../node_modules/monaco-editor/min/vs" } });
+
+      require.config({
+        "vs/nls": {
+          availableLanguages: {
+            "*": "zh-cn",
+          },
+        },
+      });
+
+      require(["vs/editor/editor.main"], function () {
+        var editor = monaco.editor.create(
+          document.getElementById("container"),
+          {
+            value: [
+              "function x() {",
+              '\tconsole.log("Hello world!");',
+              "}",
+            ].join("\n"),
+            language: "javascript",
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
